@@ -12,7 +12,7 @@ commands=("stash" "pull --rebase")
 
 run_git() {
   printf "[${i}] ${1}\r"
-  OUTPUT=$(git ${1})
+  OUTPUT=$(timeout 10s git ${1})
   is_success=$?
   if [ $is_success -lt 1 ]; then
     printf "${SUCCESS}git ${command} in ${i} - Successful${NC}\n"
